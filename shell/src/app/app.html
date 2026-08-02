@@ -1,0 +1,24 @@
+@if(claims()){
+  <h2>Logged in as {{claims().preferred_username}}</h2>
+
+  <button (click)="logout()">Logout</button>
+
+  <h3>Backend call</h3>
+  <button (click)="callApi()"> Call /me on profile-service</button>
+
+  @if(apiResult()){
+    <p style="color: green;">Backend ne jawab de diya</p>
+    <pre>{{ apiResult() | json}}</pre>
+  }
+
+  @if(apiError()){
+    <p style="color: red;">{{ apiError()}}</p>
+  }
+
+  <hr>
+  <h3>ID token claims</h3>
+  <pre>{{claims() | json}}</pre>
+}@else{
+  <h2>Not logged in</h2>
+  <button (click) = "login()">Login with Keycloak</button>
+}
