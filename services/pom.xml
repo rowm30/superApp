@@ -26,6 +26,7 @@
     <modules>
         <module>profile-service</module>
         <module>edge-gateway</module>
+        <module>product-service</module>
     </modules>
 
     <properties>

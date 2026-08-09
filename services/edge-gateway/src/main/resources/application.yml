@@ -16,3 +16,7 @@ spring:
               uri: http://localhost:8081
               predicates:
                 - Path=/me,/seller-only,/headers
+            - id: product
+              uri: http://localhost:8083
+              predicates:
+                - Path=/products/**
