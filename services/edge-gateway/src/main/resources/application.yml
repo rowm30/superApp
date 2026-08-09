@@ -15,4 +15,4 @@ spring:
             - id: profile
               uri: http://localhost:8081
               predicates:
-                - Path=/me,/seller-only
+                - Path=/me,/seller-only,/headers

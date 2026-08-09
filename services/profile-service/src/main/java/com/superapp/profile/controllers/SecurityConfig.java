@@ -45,7 +45,7 @@ public class SecurityConfig {
                 return Collections.emptyList();
             }
 
-            @SuppressWarnings("Unchecked")
+            @SuppressWarnings("unchecked")
             List<String> roles = (List<String>) realmAccess.get("roles");
 
             return roles.stream()
