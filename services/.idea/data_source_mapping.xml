@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourcePerFileMappings">
+    <file url="file://$PROJECT_DIR$/product-service/src/main/resources/db/migration/V1__create_products_table.sql" value="3823b47c-350d-4cf7-9966-4c580c040ffd" />
+  </component>
+</project>
