@@ -28,88 +28,13 @@ import java.util.stream.Collectors;
 import static tools.jackson.databind.type.LogicalType.Map;
 
 @Configuration
-@EnableMethodSecurity
 public class SecurityConfig {
-
-    @Value("${spring.security.oauth2.resourceserver.jwt.issuer-uri}")
-    private String issuerUri;
-
-    @Bean
-    public JwtAuthenticationConverter jwtAuthenticationConverter(){
-        JwtAuthenticationConverter converter = new JwtAuthenticationConverter();
-        converter.setJwtGrantedAuthoritiesConverter(jwt->{
-
-            Map<String, Object> realmAccess = jwt.getClaimAsMap("realm_access");
-
-            if(realmAccess == null || !realmAccess.containsKey("roles")){
-                return Collections.emptyList();
-            }
-
-            @SuppressWarnings("unchecked")
-            List<String> roles = (List<String>) realmAccess.get("roles");
-
-            return roles.stream()
-                    .map(role-> new SimpleGrantedAuthority("ROLE_"+role))
-                    .collect(Collectors.toList());
-        });
-        return converter;
-    }
-
-    @Bean
-    public CorsConfigurationSource corsConfigurationSource(){
-
-        CorsConfiguration config = new CorsConfiguration();
-
-        config.setAllowedOrigins(List.of("http://localhost:4200"));
-
-        config.setAllowedMethods(List.of("GET", "POST","PUT","DELETE", "OPTIONS"));
-
-        config.setAllowedHeaders(List.of("*"));
-
-        UrlBasedCorsConfigurationSource source =  new UrlBasedCorsConfigurationSource();
-
-        source.registerCorsConfiguration("/**", config);
-
-        return source;
-    }
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
         http
-                .cors(Customizer.withDefaults())
-                .csrf(csrf -> csrf.disable())
-
-                .authorizeHttpRequests(oauth2-> oauth2.anyRequest().authenticated())
-
-                .oauth2ResourceServer(oauth2 ->
-                        oauth2.jwt(jwt->
-                                jwt.jwtAuthenticationConverter(jwtAuthenticationConverter()))
-                        );
+                .csrf(csrf->csrf.disable())
+                .authorizeHttpRequests(auth->auth.anyRequest().permitAll());
         return http.build();
-    }
-
-    @Bean
-    public JwtDecoder jwtDecoder(){
-        NimbusJwtDecoder decoder = NimbusJwtDecoder
-                .withIssuerLocation(issuerUri)
-                .build();
-
-        OAuth2TokenValidator<Jwt> withIssuer = JwtValidators.createDefaultWithIssuer(issuerUri);
-
-        OAuth2TokenValidator<Jwt> audienceValidator = jwt->{
-            if(jwt.getAudience().contains("profile-api")){
-                return OAuth2TokenValidatorResult.success();
-            }
-
-            return OAuth2TokenValidatorResult.failure(
-                    new OAuth2Error("invalid_token","Token ka audience profile-api nahi hai", null)
-            );
-
-
-        };
-
-        decoder.setJwtValidator(new DelegatingOAuth2TokenValidator<>(withIssuer, audienceValidator));
-
-        return decoder;
     }
 }

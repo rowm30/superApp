@@ -14,14 +14,17 @@
     public class MeController {
 
         @GetMapping("/me")
-        public Map<String, Object> me(@AuthenticationPrincipal Jwt jwt){
-            return jwt.getClaims();
-        }
-
-        @GetMapping("/seller-only")
-        @PreAuthorize("hasRole('seller')")
-        public String sellerOnly(){
-            return "seller Dashboard";
+        public Map<String, Object> me(
+                @RequestHeader(value = "X-Passport-Sub", required = false) String sub,
+                @RequestHeader(value = "X-Passport-Username", required = false) String username,
+                @RequestHeader(value = "X-Passport-Sid", required = false) String sid)
+        {
+            return Map.of(
+                    "sub", sub == null ? "" : sub,
+                    "username", username==null ? "" : username,
+                    "sid", sid == null ? "" : sid,
+                    "source", "passport"
+            );
         }
 
         @GetMapping("/headers")
