@@ -1,5 +1,6 @@
-package com.superapp.product;
+package com.superapp.product.repository;
 
+import com.superapp.product.domain.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

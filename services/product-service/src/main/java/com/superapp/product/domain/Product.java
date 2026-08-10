@@ -1,4 +1,4 @@
-package com.superapp.product;
+package com.superapp.product.domain;
 
 
 import jakarta.persistence.*;
