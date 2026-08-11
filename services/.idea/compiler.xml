@@ -9,12 +9,14 @@
         <module name="product-service" />
         <module name="profile-service" />
         <module name="edge-gateway" />
+        <module name="order-service" />
       </profile>
     </annotationProcessing>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="edge-gateway" options="-parameters" />
+      <module name="order-service" options="-parameters" />
       <module name="product-service" options="-parameters" />
       <module name="profile-service" options="-parameters" />
     </option>
