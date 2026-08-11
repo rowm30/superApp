@@ -1,9 +1,8 @@
 package com.superapp.order.api;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestHeader;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.superapp.order.domain.Order;
+import com.superapp.order.domain.OrderService;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
 
@@ -12,6 +11,23 @@ import java.util.Map;
 @RestController
 @RequestMapping("/orders")
 public class OrderController {
+
+    // Constructor mein OrderService add karo
+    private final OrderService orderService;
+
+    public OrderController(OrderService orderService) {
+        this.orderService = orderService;
+    }
+
+    // POST /orders
+    @PostMapping
+    public Order create(
+            @RequestBody CreateOrderRequest request,
+            @RequestHeader("X-Passport-Sub") String buyerId,
+            @RequestHeader("X-Passport-Username") String username) {
+
+        return orderService.placeOrder(request, buyerId, username);
+    }
 
     @GetMapping("/ping")
     public Map<String, String> ping(
