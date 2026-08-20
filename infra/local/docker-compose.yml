@@ -2,7 +2,7 @@ services:
   keycloak:
     image: quay.io/keycloak/keycloak:26.7
     container_name: superapp-keycloak
-    command: start-dev
+    command: start-dev --import-realm
     environment:
       KC_BOOTSTRAP_ADMIN_USERNAME: admin
       KC_BOOTSTRAP_ADMIN_PASSWORD: admin
@@ -10,8 +10,9 @@ services:
       - "8080:8080"
     volumes:
       - keycloak-data:/opt/keycloak/data
+      - ./keycloak:/opt/keycloak/data/import
   postgres:
-    image: postgres:17
+    image: pgvector/pgvector:pg17
     container_name: superapp-postgres
     environment:
       POSTGRES_DB: superapp
@@ -21,7 +22,42 @@ services:
       - "5433:5432"
     volumes:
       - postgres-data:/var/lib/postgresql/data
+  kafka:
+    image: apache/kafka:4.1.0
+    container_name: superapp-kafka
+    ports:
+      # Tumhare laptop se is port pe pahunchoge
+      - "9092:9092"
+    environment:
+      # ── KRaft: ek hi node jo broker AUR controller dono hai ──
+      KAFKA_NODE_ID: 1
+      KAFKA_PROCESS_ROLES: broker,controller
+
+      # Ye node khud hi controller hai. Format: nodeId@host:port
+      KAFKA_CONTROLLER_QUORUM_VOTERS: 1@localhost:9093
+      KAFKA_CONTROLLER_LISTENER_NAMES: CONTROLLER
+
+      # Kaunse port pe sunna hai
+      KAFKA_LISTENERS: PLAINTEXT://:9092,CONTROLLER://:9093
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: CONTROLLER:PLAINTEXT,PLAINTEXT:PLAINTEXT
+
+      # ⚠️ Ye line sabse zyada logon ko phansati hai.
+      # Kafka client ko pehle connect hone par ye pata WAPAS bhejta hai,
+      # aur client PHIR isi pate pe jaata hai. Galat hua toh connection
+      # ban jaayega par messages kabhi nahi jayenge — bina saaf error ke.
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://localhost:9092
+
+      # Ek hi node hai, toh har cheez ki 1 copy. Production mein 3 hota hai.
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
+      KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
+
+      # Consumer jude toh turant kaam shuru ho, 3 second na ruke
+      KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS: 0
+    volumes:
+      - kafka-data:/var/lib/kafka/data
 
 volumes:
   keycloak-data:
   postgres-data:
+  kafka-data:

@@ -2,6 +2,7 @@ package com.superapp.order.domain;
 
 import com.superapp.order.api.CreateOrderRequest;
 import com.superapp.order.client.ProductClient;
+import com.superapp.order.events.OrderEventPublisher;
 import com.superapp.order.repository.OrderRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -10,10 +11,12 @@ import org.springframework.transaction.annotation.Transactional;
 public class OrderService {
     private final OrderRepository repo;
     private final ProductClient productClient;
+    private final OrderEventPublisher eventPublisher;
 
-    public OrderService(OrderRepository repo, ProductClient productClient) {
+    public OrderService(OrderRepository repo, ProductClient productClient, OrderEventPublisher eventPublisher) {
         this.repo = repo;
         this.productClient = productClient;
+        this.eventPublisher = eventPublisher;
     }
 
     @Transactional
@@ -38,6 +41,9 @@ public class OrderService {
             order.addItem(orderItem);
         }
 
-        return repo.save(order);
+        Order saved = repo.save(order);
+
+        eventPublisher.publishOrderPlaced(saved);
+        return saved;
     }
 }

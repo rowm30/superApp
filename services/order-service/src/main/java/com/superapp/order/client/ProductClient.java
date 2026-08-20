@@ -12,10 +12,6 @@ public class ProductClient {
     private final RestClient restClient;
 
     public ProductClient(@Value("${services.product.url}") String baseUrl) {
-        // RestClient.create() ek static factory hai — spring-web mein hi hai,
-        // koi autoconfiguration ki zaroorat nahi.
-        // Builder wala tareeka behtar hai (observability, common config milti hai),
-        // par uske liye alag module chahiye.
         this.restClient = RestClient.create(baseUrl);
     }
 
@@ -25,6 +21,15 @@ public class ProductClient {
                 .header("X-Passport-Sub", passportSub)
                 .header("X-Passport-Username", passportUsername)
                 .retrieve()
+
+                // ── NAYA ──
+                // onStatus = "agar jawab ka status ye ho, toh ye karo".
+                // Do argument: pehla condition, doosra kya karna hai.
+                // Yahan 404 ko apni exception mein badal rahe hain.
+                .onStatus(status -> status.value() == 404, (request, response) -> {
+                    throw new ProductNotFoundException(id);
+                })
+
                 .body(ProductResponse.class);
     }
 

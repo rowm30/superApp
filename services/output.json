@@ -1,0 +1,106 @@
+[
+  {
+    "Topic": "order.placed.v1",
+    "Timestamp": "Wed Aug 12 13:22:41 GST 2026",
+    "Key": "10",
+    "Value": "{\n  \"orderId\": 10,\n  \"buyerId\": \"6f606eed-c348-43f0-aed9-94ce9bda5c0f\",\n  \"totalAmount\": 299.98,\n  \"items\": [\n    {\n      \"productId\": 1,\n      \"quantity\": 2\n    }\n  ],\n  \"occurredAt\": \"2026-08-12T09:22:40.388317700Z\"\n}",
+    "Partition": "1",
+    "Offset": "0"
+  },
+  {
+    "Topic": "order.placed.v1",
+    "Timestamp": "Wed Aug 12 13:22:57 GST 2026",
+    "Key": "11",
+    "Value": "{\n  \"orderId\": 11,\n  \"buyerId\": \"6f606eed-c348-43f0-aed9-94ce9bda5c0f\",\n  \"totalAmount\": 299.98,\n  \"items\": [\n    {\n      \"productId\": 1,\n      \"quantity\": 2\n    }\n  ],\n  \"occurredAt\": \"2026-08-12T09:22:57.226949400Z\"\n}",
+    "Partition": "0",
+    "Offset": "0"
+  },
+  {
+    "Topic": "order.placed.v1",
+    "Timestamp": "Wed Aug 12 13:22:57 GST 2026",
+    "Key": "12",
+    "Value": "{\n  \"orderId\": 12,\n  \"buyerId\": \"6f606eed-c348-43f0-aed9-94ce9bda5c0f\",\n  \"totalAmount\": 299.98,\n  \"items\": [\n    {\n      \"productId\": 1,\n      \"quantity\": 2\n    }\n  ],\n  \"occurredAt\": \"2026-08-12T09:22:57.936569500Z\"\n}",
+    "Partition": "1",
+    "Offset": "1"
+  },
+  {
+    "Topic": "order.placed.v1",
+    "Timestamp": "Wed Aug 12 13:22:58 GST 2026",
+    "Key": "13",
+    "Value": "{\n  \"orderId\": 13,\n  \"buyerId\": \"6f606eed-c348-43f0-aed9-94ce9bda5c0f\",\n  \"totalAmount\": 299.98,\n  \"items\": [\n    {\n      \"productId\": 1,\n      \"quantity\": 2\n    }\n  ],\n  \"occurredAt\": \"2026-08-12T09:22:58.547030Z\"\n}",
+    "Partition": "1",
+    "Offset": "2"
+  },
+  {
+    "Topic": "order.placed.v1",
+    "Timestamp": "Wed Aug 12 13:22:59 GST 2026",
+    "Key": "14",
+    "Value": "{\n  \"orderId\": 14,\n  \"buyerId\": \"6f606eed-c348-43f0-aed9-94ce9bda5c0f\",\n  \"totalAmount\": 299.98,\n  \"items\": [\n    {\n      \"productId\": 1,\n      \"quantity\": 2\n    }\n  ],\n  \"occurredAt\": \"2026-08-12T09:22:59.100740300Z\"\n}",
+    "Partition": "1",
+    "Offset": "3"
+  },
+  {
+    "Topic": "order.placed.v1",
+    "Timestamp": "Wed Aug 12 13:22:59 GST 2026",
+    "Key": "15",
+    "Value": "{\n  \"orderId\": 15,\n  \"buyerId\": \"6f606eed-c348-43f0-aed9-94ce9bda5c0f\",\n  \"totalAmount\": 299.98,\n  \"items\": [\n    {\n      \"productId\": 1,\n      \"quantity\": 2\n    }\n  ],\n  \"occurredAt\": \"2026-08-12T09:22:59.564127400Z\"\n}",
+    "Partition": "0",
+    "Offset": "1"
+  },
+  {
+    "Topic": "order.placed.v1",
+    "Timestamp": "Wed Aug 12 13:23:00 GST 2026",
+    "Key": "16",
+    "Value": "{\n  \"orderId\": 16,\n  \"buyerId\": \"6f606eed-c348-43f0-aed9-94ce9bda5c0f\",\n  \"totalAmount\": 299.98,\n  \"items\": [\n    {\n      \"productId\": 1,\n      \"quantity\": 2\n    }\n  ],\n  \"occurredAt\": \"2026-08-12T09:23:00.030907500Z\"\n}",
+    "Partition": "2",
+    "Offset": "1"
+  },
+  {
+    "Topic": "order.placed.v1",
+    "Timestamp": "Wed Aug 12 13:23:00 GST 2026",
+    "Key": "17",
+    "Value": "{\n  \"orderId\": 17,\n  \"buyerId\": \"6f606eed-c348-43f0-aed9-94ce9bda5c0f\",\n  \"totalAmount\": 299.98,\n  \"items\": [\n    {\n      \"productId\": 1,\n      \"quantity\": 2\n    }\n  ],\n  \"occurredAt\": \"2026-08-12T09:23:00.486385200Z\"\n}",
+    "Partition": "0",
+    "Offset": "2"
+  },
+  {
+    "Topic": "order.placed.v1",
+    "Timestamp": "Wed Aug 12 13:23:00 GST 2026",
+    "Key": "18",
+    "Value": "{\n  \"orderId\": 18,\n  \"buyerId\": \"6f606eed-c348-43f0-aed9-94ce9bda5c0f\",\n  \"totalAmount\": 299.98,\n  \"items\": [\n    {\n      \"productId\": 1,\n      \"quantity\": 2\n    }\n  ],\n  \"occurredAt\": \"2026-08-12T09:23:00.897241300Z\"\n}",
+    "Partition": "1",
+    "Offset": "4"
+  },
+  {
+    "Topic": "order.placed.v1",
+    "Timestamp": "Wed Aug 12 13:23:01 GST 2026",
+    "Key": "19",
+    "Value": "{\n  \"orderId\": 19,\n  \"buyerId\": \"6f606eed-c348-43f0-aed9-94ce9bda5c0f\",\n  \"totalAmount\": 299.98,\n  \"items\": [\n    {\n      \"productId\": 1,\n      \"quantity\": 2\n    }\n  ],\n  \"occurredAt\": \"2026-08-12T09:23:01.327983Z\"\n}",
+    "Partition": "1",
+    "Offset": "5"
+  },
+  {
+    "Topic": "order.placed.v1",
+    "Timestamp": "Wed Aug 12 13:23:01 GST 2026",
+    "Key": "20",
+    "Value": "{\n  \"orderId\": 20,\n  \"buyerId\": \"6f606eed-c348-43f0-aed9-94ce9bda5c0f\",\n  \"totalAmount\": 299.98,\n  \"items\": [\n    {\n      \"productId\": 1,\n      \"quantity\": 2\n    }\n  ],\n  \"occurredAt\": \"2026-08-12T09:23:01.735169800Z\"\n}",
+    "Partition": "1",
+    "Offset": "6"
+  },
+  {
+    "Topic": "order.placed.v1",
+    "Timestamp": "Wed Aug 12 13:23:02 GST 2026",
+    "Key": "21",
+    "Value": "{\n  \"orderId\": 21,\n  \"buyerId\": \"6f606eed-c348-43f0-aed9-94ce9bda5c0f\",\n  \"totalAmount\": 299.98,\n  \"items\": [\n    {\n      \"productId\": 1,\n      \"quantity\": 2\n    }\n  ],\n  \"occurredAt\": \"2026-08-12T09:23:02.170088600Z\"\n}",
+    "Partition": "0",
+    "Offset": "3"
+  },
+  {
+    "Topic": "order.placed.v1",
+    "Timestamp": "Wed Aug 12 13:23:02 GST 2026",
+    "Key": "22",
+    "Value": "{\n  \"orderId\": 22,\n  \"buyerId\": \"6f606eed-c348-43f0-aed9-94ce9bda5c0f\",\n  \"totalAmount\": 299.98,\n  \"items\": [\n    {\n      \"productId\": 1,\n      \"quantity\": 2\n    }\n  ],\n  \"occurredAt\": \"2026-08-12T09:23:02.583601800Z\"\n}",
+    "Partition": "0",
+    "Offset": "4"
+  }
+]

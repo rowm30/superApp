@@ -26,6 +26,9 @@ public class Product {
     @Column(name = "created_at", insertable = false, updatable = false)
     private Instant createdAt;
 
+    @Column(nullable = false)
+    private Integer stock;
+
     public Product(String name, BigDecimal price, String sellerId) {
         this.name = name;
         this.price = price;
@@ -74,4 +77,7 @@ public class Product {
     public void setCreatedAt(Instant createdAt) {
         this.createdAt = createdAt;
     }
+
+    public Integer getStock() { return stock; }
+    public void setStock(Integer stock) { this.stock = stock; }
 }
