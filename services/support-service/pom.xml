@@ -49,6 +49,12 @@
 			<groupId>org.springframework.ai</groupId>
 			<artifactId>spring-ai-starter-model-anthropic</artifactId>
 		</dependency>
+		<!-- QuestionAnswerAdvisor yahan hai — chat model starter isko
+     saath nahi laata, alag se lena padta hai -->
+		<dependency>
+			<groupId>org.springframework.ai</groupId>
+			<artifactId>spring-ai-vector-store-advisor</artifactId>
+		</dependency>
 
 		<!-- EMBEDDINGS: ONNX model JVM ke andar chalta hai.
              Koi API key nahi, koi network call nahi.
