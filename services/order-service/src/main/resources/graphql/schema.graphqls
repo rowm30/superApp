@@ -1,0 +1,23 @@
+type Query {
+    # buyer ke saare orders
+    myOrders: [Order!]!
+    # ek specific order (ownership check hoga)
+    order(id: ID!): Order
+}
+
+type Order {
+    id: ID!
+    status: String!
+    totalAmount: Float!
+    createdAt: String
+    items: [OrderItem!]!
+}
+
+type OrderItem {
+    id: ID!
+    productId: ID!
+    productName: String!
+    unitPrice: Float!
+    quantity: Int!
+    lineTotal: Float!
+}

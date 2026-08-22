@@ -24,3 +24,11 @@ spring:
               uri: http://localhost:8084
               predicates:
                 - Path=/orders/**
+            - id: support
+              uri: http://localhost:8085
+              predicates:
+                - Path=/support/**
+            - id: graphql
+              uri: http://localhost:8084
+              predicates:
+                - Path=/graphql
